@@ -154,14 +154,19 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="sources\application.cpp" />
     <ClCompile Include="sources\apps\draw_model_app.cpp" />
+    <ClCompile Include="sources\apps\draw_particles_app.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="sources\application.h" />
     <ClInclude Include="sources\apps\draw_model_app.h" />
+    <ClInclude Include="sources\apps\draw_particles_app.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="sources\shaders\draw_model_fs.glsl" />
     <None Include="sources\shaders\draw_model_vs.glsl" />
+    <None Include="sources\shaders\draw_particles_cs.glsl" />
+    <None Include="sources\shaders\draw_particles_fs.glsl" />
+    <None Include="sources\shaders\draw_particles_vs.glsl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

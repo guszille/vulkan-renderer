@@ -24,6 +24,9 @@
     <ClCompile Include="sources\application.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="sources\apps\draw_particles_app.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="sources\apps\draw_model_app.h">
@@ -32,9 +35,15 @@
     <ClInclude Include="sources\application.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="sources\apps\draw_particles_app.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="sources\shaders\draw_model_vs.glsl" />
     <None Include="sources\shaders\draw_model_fs.glsl" />
+    <None Include="sources\shaders\draw_particles_vs.glsl" />
+    <None Include="sources\shaders\draw_particles_fs.glsl" />
+    <None Include="sources\shaders\draw_particles_cs.glsl" />
   </ItemGroup>
 </Project>

@@ -6,19 +6,25 @@
 
 #include <GLFW/glfw3.h>
 
+#include <cstdlib>
 #include <iostream>
 #include <stdexcept>
-#include <cstdlib>
 
 #include "sources/application.h"
 #include "sources/apps/draw_model_app.h"
+#include "sources/apps/draw_particles_app.h"
+
+enum AppIdentifier
+{
+	DRAW_MODEL, DRAW_PARTICLES
+};
 
 class Program
 {
 public:
-	void run()
+	void run(int appIdentifier)
 	{
-		setup();
+		setup(appIdentifier);
 		runMainLoop();
 		cleanUp();
 	}
@@ -39,7 +45,7 @@ private:
 		ptr->framebufferResized = true;
 	}
 
-	void setup()
+	void setup(int appIdentifier)
 	{
 		glfwInit();
 
@@ -50,7 +56,19 @@ private:
 		glfwSetWindowUserPointer(window, this);
 		glfwSetFramebufferSizeCallback(window, framebufferSizeCallback);
 
-		app = new DrawModelApp();
+		switch (appIdentifier)
+		{
+		case AppIdentifier::DRAW_MODEL:
+			app = new DrawModelApp();
+			break;
+
+		case AppIdentifier::DRAW_PARTICLES:
+			app = new DrawParticlesApp();
+			break;
+
+		default:
+			break;
+		}
 
 		app->setup(window);
 	}
@@ -84,10 +102,18 @@ private:
 int main()
 {
 	Program program;
+	int appIdentifier = -1;
 
 	try
 	{
-		program.run();
+		std::cout << "APPLICATIONS:" << std::endl;
+		std::cout << "\t0. DRAW MODEL" << std::endl;
+		std::cout << "\t1. DRAW PARTICLES" << std::endl;
+		std::cout << "> ";
+
+		std::cin >> appIdentifier;
+
+		program.run(appIdentifier);
 	}
 	catch (const std::exception& e)
 	{
